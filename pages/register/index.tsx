@@ -9,6 +9,8 @@ import {
   RegistraionSVG5,
 } from "@/components/Login/images/RegistraionSVG";
 import { useRouter } from "next/router";
+import LeftImg from "@/components/Login/common/LeftImg";
+import RightImg from "@/components/Login/common/RightImg";
 
 const RegisterationTypesData = [
   {
@@ -55,50 +57,91 @@ const RegisterationTypes = () => {
   };
 
   return (
-    <div className="font-poppins" id="RegistrationWrapper2Div">
-      <div
-        className="sticky top-0 flex justify-between items-center px-4 md:pl-11 md:pr-16 h-20 w-full"
-        style={{
-          background:
-            "linear-gradient(126deg, rgba(220, 220, 220, 0.30) 3.84%, rgba(255, 255, 255, 0.10) 30.14%)",
-          backdropFilter: "blur(100px)",
-        }}
-      >
-        <span>
-          <LogoSVG />
-        </span>
-        <div className=" flex justify-end items-center font-poppins opacity-100 z-50 text-md sm:text-xl">
-          <span className="text-trustgreen">Trust . </span>
-          <span className="text-transparencyyellow">Transparency . </span>
-          <span className="text-excellenceBlue">Excellence</span>
-        </div>
+    <div className="flex h-screen">
+      <div className="w-full md:w-1/2 bg-orange-100 flex items-center justify-center relative">
+        <div className="hidden md:inline-block"><LeftImg /></div>
+        <div className="absolute top-4 left-4 text-lg font-bold text-orange-400">Your Logo</div>
       </div>
+      <div className="absolute z-10 inset-0 flex items-center justify-center p-4 md:p-0">
+        <div className="max-w-md w-full p-6 md:p-8 rounded-3xl shadow-wrapShadow bg-white">
+          <div className="flex">
+            <div className="w-8/12">
+              <h2 className="text-base md:text-[20px] text-black mt-1">Welcome to Lorem</h2>
+              <h1 className="text-[40px] md:text-[55px] font-medium text-black">Sign up</h1>
+            </div>
+            <div className="w-1/3">
+              <span className="text-sm text-[#8D8D8D] hover:text-gray-800">Have an Account? </span>
+              <a href="#" className="text-[#E48700] text-sm">Sign in</a>
+            </div>
+            
+          </div>
+          <form className="mt-8">
+            <div className="flex flex-col-reverse md:flex-col">
+              <div className="flex flex-col mt-7 md:mt-0">
+                <div className="mb-6">
+                  <label htmlFor="username" className="block text-sm md:text-base">
+                    Enter your username or email address
+                  </label>
+                  <input
+                    type="text"
+                    id="username"
+                    className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm placeholder:text-[#808080] h-14"
+                    placeholder="Username or email address"
+                  />
+                </div>
+                <div className="mb-6 flex gap-4">
+                  <div>
+                    <label htmlFor="username" className="block text-sm md:text-base">
+                      User name
+                    </label>
+                    <input
+                      type="text"
+                      id="username"
+                      className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm placeholder:text-[#808080] h-14"
+                      placeholder="Username"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="username" className="block text-sm md:text-base">
+                      Contact Number
+                    </label>
+                    <input
+                      type="text"
+                      id="username"
+                      className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm placeholder:text-[#808080] h-14"
+                      placeholder="Contact Number"
+                    />
+                  </div>
+                </div>
+                <div className="mb-6 relative">
+                  <label htmlFor="password" className="block text-sm md:text-base">
+                    Enter your Password
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm placeholder:text-[#808080] h-14"
+                    placeholder="Password"
+                  />
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    className="w-full py-3 px-4 bg-[#E48700] hover:bg-[#e5921d] text-white font-semibold rounded-md shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#e5921d]"
+                  >
+                    Sign in
+                  </button>
+                </div>
+              </div>
+            </div>
 
-      <div
-        className="flex flex-col justify-center h-full font-poppins "
-        style={{ minHeight: "calc(100vh - 80px)" }}
-      >
-        <div className="flex flex-col justify-start  items-center p-4 w-full">
-          <span className="text-black font-poppins text-3xl font-medium">
-            Our Products & Services.
-          </span>
-          <span className="text-sm text-grayText font-normal">
-            Please select one of the following options to proceed.
-          </span>
-        </div>
-        <div className="flex flex-wrap mx-2 sm:gap-x-28 gap-y-3 h-full items-center justify-center my-5">
-          {RegisterationTypesData.map((data) => (
-            <RegistrationCard
-              key={data.title}
-              svg={data.svg}
-              title={data.title}
-              message={data.message}
-              btnClick={() => handleNavigate(data.url, data.type)}
-            />
-          ))}
+          </form>
         </div>
       </div>
-    </div>
+      <div className="w-1/2 bg-white hidden md:flex items-center justify-center relative">
+        <RightImg />
+      </div>
+      </div>
   );
 };
 
