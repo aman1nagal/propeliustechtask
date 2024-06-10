@@ -12,11 +12,10 @@ const IndexPage = () => {
   }
 
   useEffect(() => {
-    if (authState == "false") {
+    if (authState == "false" || authState == null) {
       router.push("/login");
     }
   }, []);
-
 
   const handleLogout = () => {
     console.log("sdsds");
