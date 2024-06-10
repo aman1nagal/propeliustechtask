@@ -17,6 +17,7 @@ const IndexPage = () => {
     }
   }, []);
 
+
   const handleLogout = () => {
     console.log("sdsds");
     localStorage.setItem("auth", "false");
