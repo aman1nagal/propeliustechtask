@@ -33,7 +33,7 @@ const Login = () => {
   // redirect to / if local storage have value
   useEffect(() => {
     const authState = localStorage.getItem("auth");
-    if (authState == "true" || authState == null) router.push("/");
+    if (authState == "true" ) router.push("/");
   }, []);
 
   const handleSubmit = (values, { setFieldError }) => {
@@ -89,98 +89,96 @@ const Login = () => {
               onSubmit={handleSubmit}
             >
               {({ errors, touched, values, setFieldError }) => (
-                <>
-                  <Form className=" mt-8">
-                    <div className="flex flex-col-reverse md:flex-col">
-                      <div className="flex flex-col mt-7 md:mt-0">
-                        <div className="mb-6">
-                          <label
-                            htmlFor="email"
-                            className="block text-sm md:text-base"
-                          >
-                            Enter your email or email address
-                          </label>
-                          <Field
-                            type="text"
-                            id="email"
-                            className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm placeholder:text-[#808080] h-14"
-                            name="email"
-                            placeholder="email or email address"
-                          />
-                          {errors && (
-                            <div className="text-status-danger-800 text-left text-xs mt-1 pl-1">
-                              {errors?.email && touched?.email && errors?.email}
-                            </div>
+                <Form className=" mt-8">
+                  <div className="flex flex-col-reverse md:flex-col">
+                    <div className="flex flex-col mt-7 md:mt-0">
+                      <div className="mb-6">
+                        <label
+                          htmlFor="email"
+                          className="block text-sm md:text-base"
+                        >
+                          Enter your email or email address
+                        </label>
+                        <Field
+                          type="text"
+                          id="email"
+                          className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm placeholder:text-[#808080] h-14"
+                          name="email"
+                          placeholder="email or email address"
+                        />
+                        {errors && (
+                          <div className="text-status-danger-800 text-left text-xs mt-1 pl-1">
+                            {errors?.email && touched?.email && errors?.email}
+                          </div>
+                        )}
+                      </div>
+                      <div className="mb-6 relative">
+                        <label
+                          htmlFor="password"
+                          className="block text-sm md:text-base"
+                        >
+                          Enter your Password
+                        </label>
+                        <Field
+                          type={`${showPassword ? "password" : "text"}`}
+                          id="password"
+                          name="password"
+                          className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm placeholder:text-[#808080] h-14"
+                          placeholder="Password"
+                        />
+                        <div
+                          className="absolute top-12 right-3"
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          {showPassword == true ? (
+                            <AiFillEye size={20} color="#9CA3AF" />
+                          ) : (
+                            <AiFillEyeInvisible size={20} color="#9CA3AF" />
                           )}
                         </div>
-                        <div className="mb-6 relative">
-                          <label
-                            htmlFor="password"
-                            className="block text-sm md:text-base"
-                          >
-                            Enter your Password
-                          </label>
-                          <Field
-                            type={`${showPassword ? "password" : "text"}`}
-                            id="password"
-                            name="password"
-                            className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm placeholder:text-[#808080] h-14"
-                            placeholder="Password"
-                          />
-                          <div
-                            className="absolute top-12 right-3"
-                            onClick={() => setShowPassword(!showPassword)}
-                          >
-                            {showPassword == true ? (
-                              <AiFillEye size={20} color="#9CA3AF" />
-                            ) : (
-                              <AiFillEyeInvisible size={20} color="#9CA3AF" />
-                            )}
+                        {errors && (
+                          <div className="text-status-danger-800 text-left text-xs mt-1 pl-1">
+                            {errors?.password &&
+                              touched?.password &&
+                              errors?.password}
                           </div>
-                          {errors && (
-                            <div className="text-status-danger-800 text-left text-xs mt-1 pl-1">
-                              {errors?.password &&
-                                touched?.password &&
-                                errors?.password}
-                            </div>
-                          )}
-                          <div className="flex items-center justify-end mt-4">
-                            <a href="#" className="text-[13px] text-[#AD3113]">
-                              Forgot Password?
-                            </a>
-                          </div>
-                        </div>
-                        <div>
-                          <button
-                            type="submit"
-                            className="w-full py-3 px-4 bg-[#E48700] hover:bg-[#e5921d] text-white font-semibold rounded-md shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#e5921d]"
-                          >
-                            Sign in
-                          </button>
-                        </div>
-                        <div className="hidden md:flex items-center justify-center my-6">
-                          <span className="text-gray-500">OR</span>
+                        )}
+                        <div className="flex items-center justify-end mt-4">
+                          <a href="#" className="text-[13px] text-[#AD3113]">
+                            Forgot Password?
+                          </a>
                         </div>
                       </div>
-
-                      <div className="grid grid-cols-6 gap-3">
+                      <div>
                         <button
-                          type="button"
-                          className="w-full py-3 px-4 h-[55px] bg-[#FFF4E3] text-[#B87514] rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 col-span-4 text-xs md:text-base"
+                          type="submit"
+                          className="w-full py-3 px-4 bg-[#E48700] hover:bg-[#e5921d] text-white font-semibold rounded-md shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#e5921d]"
                         >
-                          <GoogleImg />
-                          <span>Sign in with Google</span>
+                          Sign in
                         </button>
-                        <button className="w-full h-[55px] bg-[#F6F6F6] shadow-sm flex items-center justify-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded-lg col-span-1">
-                          <FacebookImg />
-                        </button>
-                        <button className="w-full h-[55px] bg-[#F6F6F6] shadow-sm flex items-center justify-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded-lg col-span-1">
-                          <AppleImg />
-                        </button>
+                      </div>
+                      <div className="hidden md:flex items-center justify-center my-6">
+                        <span className="text-gray-500">OR</span>
                       </div>
                     </div>
-                  </Form>
-                </>
+
+                    <div className="grid grid-cols-6 gap-3">
+                      <button
+                        type="button"
+                        className="w-full py-3 px-4 h-[55px] bg-[#FFF4E3] text-[#B87514] rounded-lg shadow-sm flex items-center justify-center space-x-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 col-span-4 text-xs md:text-base"
+                      >
+                        <GoogleImg />
+                        <span>Sign in with Google</span>
+                      </button>
+                      <button className="w-full h-[55px] bg-[#F6F6F6] shadow-sm flex items-center justify-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded-lg col-span-1">
+                        <FacebookImg />
+                      </button>
+                      <button className="w-full h-[55px] bg-[#F6F6F6] shadow-sm flex items-center justify-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded-lg col-span-1">
+                        <AppleImg />
+                      </button>
+                    </div>
+                  </div>
+                </Form>
               )}
             </Formik>
           </div>
