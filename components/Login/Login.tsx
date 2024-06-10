@@ -107,7 +107,7 @@ const Login = () => {
                           placeholder="email or email address"
                         />
                         {errors && (
-                          <div className="text-status-danger-800 text-left text-xs mt-1 pl-1">
+                          <div className="text-red-500 text-left text-xs mt-1 pl-1">
                             {errors?.email && touched?.email && errors?.email}
                           </div>
                         )}
@@ -137,7 +137,7 @@ const Login = () => {
                           )}
                         </div>
                         {errors && (
-                          <div className="text-status-danger-800 text-left text-xs mt-1 pl-1">
+                          <div className="text-red-500 text-left text-xs mt-1 pl-1">
                             {errors?.password &&
                               touched?.password &&
                               errors?.password}
