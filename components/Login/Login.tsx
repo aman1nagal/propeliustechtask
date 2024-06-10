@@ -33,7 +33,7 @@ const Login = () => {
   // redirect to / if local storage have value
   useEffect(() => {
     const authState = localStorage.getItem("auth");
-    if (authState == "true") router.push("/");
+    if (authState == "true" || authState == null) router.push("/");
   }, []);
 
   const handleSubmit = (values, { setFieldError }) => {
